@@ -1,21 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import styles from "./styles/estilos";
+import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native';
+import HeaderIndex from './componentes/HeaderIndex';
+import MeuCarro from './componentes/MeuCarro';
+import Contrato from './componentes/Contrato';
+import Faturas from './componentes/Faturas';
+import NavBar from './componentes/NavBar';
+import { NativeRouter, Route } from "react-router-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <KeyboardAvoidingView  behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={styles.app}>
+        <NativeRouter>
+          <View style={styles.conteudo}>
+            <HeaderIndex />
+            <MeuCarro /> 
+            <NavBar />
+            <StatusBar style="auto" /> 
+          </View>
+        </NativeRouter>
+    </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
