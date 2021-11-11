@@ -1,23 +1,39 @@
 import ContratoObj from '../models/contrato.json'; 
-import { Text, View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import styles from "../styles/estilos";
+import React from 'react';
  
-// var cssStatusFatura = "bg-light text-dark";
-var cssStatusFatura
+// var cssStatusFatura = "bg-light text-dark"; 
 var statusFatura = "Em Aberto";
 var valorFatura = 0;
 
-
 //Renderiza cada fatura passada como propriedade através do componente faturas.
 const Fatura = (props) => {
+    // console.log("CARREGOU FATURA",props.fatura);
     CarregaModelMockFatura(props.fatura);
-    return (
-        <View style={[styles.divRadius,cssStatusFatura]}>
-            <Text>{"Valor Fatura: " + valorFatura}</Text>
-            <Text>{"Mês Faturamento:" + props.fatura.MesReferencia}</Text>
-            <Text>{"Status Fatura: " + statusFatura}</Text>
+    return ( 
+        statusFatura != "Paga" ? (
+        <View >
+            <View style={styles.componentContent,cssFatura.StatusFaturaOk}>
+                <View style={[cssFatura.StatusFaturaOk]}> 
+                    <Text style={[styles.textDark, styles.h3]}>{"Valor Fatura: " + valorFatura}</Text>
+                    <Text style={[styles.textDark, styles.h3]}>{"Mês Faturamento: " + props.fatura.MesReferencia}</Text>
+                    <Text style={[styles.textDark, styles.h3]}>{"Status Fatura: " + statusFatura}</Text>
+                </View> 
+            </View>
+        </View>    
+            ) : (
+        <View >
+            <View style={styles.componentContent,cssFatura.StatusFaturaAtraso}>
+                <View style={[cssFatura.StatusFaturaAtraso]}> 
+                    <Text style={[styles.textWhite, styles.h3]}>{"Valor Fatura: " + valorFatura}</Text>
+                    <Text style={[styles.textWhite, styles.h3]}>{"Mês Faturamento: " + props.fatura.MesReferencia}</Text>
+                    <Text style={[styles.textWhite, styles.h3]}>{"Status Fatura: " + statusFatura}</Text>
+                </View>
+            </View>  
         </View>
-    );
+        )
+    )
   };
 
 //Carrega informações da fatura e realizando o calculo caso esteja vencida
@@ -25,36 +41,28 @@ const Fatura = (props) => {
 //fonte dos dados: /fatura.json
 function CarregaModelMockFatura(fatura){ 
     let porcJuros = ContratoObj.JurosVencimento;  
-    valorFatura = fatura.Valor; 
-    //cssStatusFatura = "bg-light text-dark";
-
+    valorFatura = fatura.Valor;  
+    
     if(fatura.Status === 1 ){
         statusFatura = "Paga";
     };
     
     if(fatura.Status === 2) {
         statusFatura = "Em atraso";
-        //cssStatusFatura = "text-white bg-danger";
         let valorDoJuros = valorFatura * (porcJuros/100);
         let valorComJuros = valorDoJuros + valorFatura;
         valorFatura = valorComJuros; 
      };
-
-     if (statusFatura ==="Em atraso"){
-         StyleSheet.create({
-            cssStatusFatura: {
-                backgroundColor: "red"
-            } 
-        });
-     }
-     else{
-         StyleSheet.create({
-             
-            cssStatusFatura: {
-              backgroundColor: "ghostwhite"
-            } 
-        });
-     }
 };
+
+
+const cssFatura = StyleSheet.create({
+     StatusFaturaAtraso: {
+        backgroundColor: "red"
+    },
+    StatusFaturaOk: {
+        backgroundColor: "ghostwhite"
+    },
+});
 
 export default Fatura;

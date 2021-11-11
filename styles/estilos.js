@@ -57,10 +57,10 @@ export default StyleSheet.create({
     overflow: "hidden",
     padding: 5,
     minWidth: 20,
-    textAlign: "center",
+    //textAlign: "center",
     marginRight: 12,
-    fontSize: 16,
-    fontWeight: "bold",
+    //fontSize: 16,
+    //fontWeight: "bold",
   },
 
   component: {
@@ -260,6 +260,9 @@ export default StyleSheet.create({
   mt1: {
     marginTop: 12,
   },
+  mb1: {
+     marginBottom: 12,
+  },
   mt2: {
     marginTop: 24,
   },
@@ -335,9 +338,9 @@ export default StyleSheet.create({
     color: "powderblue", //"powderblue" , "mintcream"
   },
   
-  textCenter: {
-    textAlign: "center",
-  },
+  // textCenter: {
+  //   textAlign: "center",
+  // },
 
   card: {
     position: "relative",

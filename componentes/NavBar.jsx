@@ -1,21 +1,8 @@
-import { Text, View,Button } from "react-native";
+import { Text, View } from "react-native";
 import React from "react";
 import styles from "../styles/estilos";
-import { Link, Route } from "react-router-native";
-
-function MeuCarro() {
-  return <Text style={styles.header}>Meu Carro</Text>;
-}
-
-function Faturas() {
-  return <Text style={styles.header}>Faturas</Text>;
-}
-
-function Contrato() {
-  return <Text style={styles.header}>Contrato</Text>;
-}
-
-
+import { Link } from "react-router-native"; 
+ 
 //Renderiza o componente de Navbar para a navegação entre as telas da aplicação.
 const NavBar = () =>{
     return ( 
@@ -29,10 +16,6 @@ const NavBar = () =>{
           <Link  to="/Contrato"  style={[styles.success,styles.buttonNav]} >
             <Text style={[styles.textWhite]}>Contrato</Text>
           </Link>
-
-          <Route exact path="/" component={MeuCarro} />
-          <Route path="/Faturas" component={Faturas} />
-          <Route path="/Contrato" component={Contrato} />
         </View>
     );
 };

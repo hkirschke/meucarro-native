@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import styles from "./styles/estilos";
-import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native';
+import {View, KeyboardAvoidingView } from 'react-native';
 import HeaderIndex from './componentes/HeaderIndex';
 import MeuCarro from './componentes/MeuCarro';
 import Contrato from './componentes/Contrato';
@@ -16,7 +16,21 @@ export default function App() {
         <NativeRouter>
           <View style={styles.conteudo}>
             <HeaderIndex />
-            <MeuCarro /> 
+            <Route exact path="/" 
+              render={() => (
+              <MeuCarro   />
+              )}
+            />
+            <Route exact path="/Faturas" 
+              render={() => (
+              <Faturas />
+              )}
+            />
+            <Route exact path="/Contrato" 
+              render={() => (
+              <Contrato   />
+              )}
+            />
             <NavBar />
             <StatusBar style="auto" /> 
           </View>

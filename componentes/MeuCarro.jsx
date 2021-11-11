@@ -1,7 +1,6 @@
 import { Text, View, Image } from "react-native";
 import React from "react";
 import styles from "../styles/estilos";
-// import CarroObj from '../models/meucarro.json';
 import CarroObj from '../models/meucarro.js';
 
 const MeuCarro = () => {
