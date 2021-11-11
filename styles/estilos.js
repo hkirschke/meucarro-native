@@ -302,7 +302,6 @@ export default StyleSheet.create({
   },
 
   cardFooter: {
-    // padding: 0.75, 
     backgroundColor: "gainsboro"  
   }, 
 
