@@ -8,7 +8,7 @@ const Faturas =
   {
       "Valor" : 1000,
       "MesReferencia": 11,
-      "Status": 0
+      "Status": 2
   },
   {
       "Valor" : 1000,

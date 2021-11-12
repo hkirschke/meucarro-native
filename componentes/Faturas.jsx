@@ -6,8 +6,7 @@ import styles from "../styles/estilos";
 
 //Renderiza o componente Faturas, usado o subcomponente Fatura, enviando as faturas carregadas
 //do arquivo fatura.json
-const Faturas = () => { 
- 
+const Faturas = () => {
   return(
     <View style={styles.component}>
       <View style={styles.componentHeader}>
